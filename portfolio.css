@@ -1,0 +1,167 @@
+:root {
+    --main-bg-color: #251e1e; /* اللون الأساسي */
+    --accent-color: #1567d3; /* اللون الذهبي */
+    --text-color: #ffffff; /* لون النص */
+    --hover-color: #000852; /* لون التحويم */
+    --shadow-color: rgba(0, 0, 0, 0.2); /* ظل العناصر */
+    --hover-shadow-color: rgba(255, 0, 0, 0.4); /* ظل عند التحويم */
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: linear-gradient(to bottom right, var(--main-bg-color), var(--accent-color));
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* الشريط العلوي */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--main-bg-color);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h1 {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.nav-links a:hover {
+    background-color: var(--accent-color);
+    color: var(--main-bg-color);
+}
+/* نافذة التكبير */
+.modal {
+    display: none; /* مخفية في البداية */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* خلفية داكنة */
+}
+
+/* صورة التكبير */
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    animation: zoomIn 0.3s;
+    border-radius: 10px;
+}
+
+/* زر الإغلاق */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover,
+.close:focus {
+    color: #ff6600;
+}
+
+/* تأثير التكبير */
+@keyframes zoomIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* معرض الأعمال */
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+}
+
+.portfolio-item {
+    background: var(--main-bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.portfolio-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px var(--hover-shadow-color);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.portfolio-item p {
+    margin: 0;
+    padding: 1rem;
+    color: var(--text-color);
+    background-color: var(--hover-color);
+}
+
+/* الفوتر */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--main-bg-color);
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    box-shadow: 0 -4px 8px var(--shadow-color);
+}
+
+/* تصميم مستجيب */
+@media (max-width: 768px) {
+    .navbar h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav-links a {
+        margin: 0 0.5rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .portfolio-container {
+        gap: 1rem;
+    }
+
+    .portfolio-item img {
+        height: 150px;
+    }
+}
